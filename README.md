@@ -42,7 +42,7 @@ Quick Event Function Creator is an Unreal Engine editor plugin that dramatically
 2.  Hold down **Shift** and **Left-Click** anywhere on the empty graph space.
 3.  A text input dialog will appear.
 4.  Type the function or event signature you want to create.
-5.  Press **Enter** or click **OK**.
+5.  Press **Enter**.
 6.  The corresponding Function or Custom Event node will be created at the cursor's location.
 
 ## Customization
