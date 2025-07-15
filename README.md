@@ -35,12 +35,6 @@ Quick Event Function Creator is an Unreal Engine editor plugin that dramatically
 - 5.5
 - 5.6
 
-## Installation
-
-1.  Download the plugin version that matches your Unreal Engine version.
-2.  Create a `Plugins` folder in your project's root directory if you don't already have one.
-3.  Unzip the downloaded file and place the `QuickEventFunctionCreator` folder into your project's `Plugins` directory.
-4.  Restart your Unreal Engine editor. The plugin will be enabled automatically.
 
 ## How to Use
 
