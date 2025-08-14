@@ -1,12 +1,12 @@
-# Quick Event Function Creator v2.0
+# Quick Event Function Creator v2.1
 
 ## Introduction
 
-Quick Event Function Creator is a revolutionary Unreal Engine editor plugin that transforms your Blueprint development workflow. Using unified natural language syntax, you can instantly create variables, functions, events, and variable nodes with smart aliases and intelligent positioning. What used to take minutes of clicking now takes seconds of typing.
+Quick Event Function Creator is a revolutionary Unreal Engine editor plugin that transforms your Blueprint development workflow. Using unified natural language syntax, you can instantly create variables, functions, events, macros, and variable nodes with smart aliases and intelligent positioning. What used to take minutes of clicking now takes seconds of typing.
 
 ## Table of Contents
 
-- [🚀 What's New in v2.0](#-whats-new-in-v20)
+- [🚀 What's New in v2.1](#-whats-new-in-v21)
 - [✨ Features](#-features)
 - [🔧 Supported Engine Versions](#-supported-engine-versions)
 - [📦 Installation](#-installation)
@@ -17,8 +17,15 @@ Quick Event Function Creator is a revolutionary Unreal Engine editor plugin that
 - [🧪 Examples](#-examples)
 - [💬 Support](#-support)
 
-## 🚀 What's New in v2.0
+## 🚀 What's New in v2.1
 
+- **🆕 Macro Creation System:** Create Blueprint macros with full parameter support (in/out/inout/exec)
+- **⚡ Enhanced Alias System:** Extended type aliases including exec→execute and parameter directions
+- **🔧 Complete Parameter Support:** All macro parameter types with intelligent pin generation
+- **🎯 Improved UI Experience:** Enhanced input hints with comprehensive syntax examples
+- **🐛 Critical Fixes:** Resolved parameter parsing issues for seamless macro creation
+
+### Previous v2.0 Features
 - **🔥 Unified Syntax System:** One consistent language for variables, functions, and events
 - **⚡ Smart Alias System:** 5 categories of shortcuts for maximum efficiency
 - **🎯 Variable Node Creation:** Instantly generate Get/Set nodes for existing variables
@@ -27,7 +34,7 @@ Quick Event Function Creator is a revolutionary Unreal Engine editor plugin that
 
 ## ✨ Features
 
-- **🚀 Unified Creation:** Create variables, functions, events, and variable nodes with one syntax
+- **🚀 Unified Creation:** Create variables, functions, events, macros, and variable nodes with one syntax
 - **⚡ Smart Aliases:** Type 70% less with intelligent shortcuts (e→event, g→get, i→integer)
 - **🧠 Context Awareness:** Automatically detects scope and creates appropriate variable types
 - **🎯 Intelligent Positioning:** Places nodes exactly where you click in the graph
@@ -129,6 +136,19 @@ multicast event <name>      // Multicast event (or use 'm event')
 reliable server event       // Reliable server event (or use 'rel s event')
 ```
 
+#### 🆕 Macros (v2.1)
+```
+macro <name> [parameters]       // Blueprint macro
+macro Calculate(float Input, out float Result)
+macro ProcessData(exec In, string Data, inout bool Flag, out exec Success)
+```
+
+**Parameter Directions:**
+- `in` / `input`: Input parameter (default)
+- `out` / `output`: Output parameter
+- `inout` / `ref` / `io`: Input/Output parameter
+- `exec` / `execute`: Execution pin
+
 #### Variable Nodes (for existing variables)
 ```
 get <variable_name>         // Create Get node
@@ -142,7 +162,7 @@ set <variable_name>         // Create Set node
 
 ## ⚡ Smart Aliases
 
-v2.0 features a comprehensive 5-category alias system that reduces typing by up to 70%. All aliases are fully customizable in Project Settings.
+v2.1 features a comprehensive 6-category alias system that reduces typing by up to 70%. All aliases are fully customizable in Project Settings.
 
 ### 🎭 Event Aliases
 | Alias | Full Command | Example |
@@ -167,6 +187,18 @@ v2.0 features a comprehensive 5-category alias system that reduces typing by up 
 | `lv` | local | `lv str Name` |
 | `local` | local | `local b IsReady` |
 
+### 🆕 Macro Aliases (v2.1)
+| Alias | Full Command | Example |
+|-------|-------------|---------|
+| `m` | macro | `m Calculate(float Input, out float Result)` |
+| `macro` | macro | `macro ProcessData(exec In, string Data, inout bool Flag)` |
+
+**Parameter Direction Aliases:**
+- `in` / `input`: Input parameter (default)
+- `out` / `output`: Output parameter
+- `inout` / `ref` / `io`: Input/Output parameter
+- `exec` / `execute`: Execution pin
+
 ### 🔗 Node Operation Aliases
 | Alias | Full Command | Example |
 |-------|-------------|---------|
@@ -187,6 +219,7 @@ v2.0 features a comprehensive 5-category alias system that reduces typing by up 
 | `v` | vector | `vec`, `vec3`, `vector` |
 | `r` | rotator | `rot`, `rotator` |
 | `t` | transform | `xform`, `transform` |
+| `exec` | execute | `execute` |
 
 ### 💡 Alias Examples
 ```
@@ -196,6 +229,11 @@ var str PlayerName                      // var string PlayerName
 lv b IsReady                           // local boolean IsReady
 g PlayerHealth                         // get PlayerHealth (creates Get node)
 st PlayerHealth                        // set PlayerHealth (creates Set node)
+
+// 🆕 Macro Examples (v2.1)
+m Calculate(f Input, out f Result)      // macro Calculate(float Input, out float Result)
+macro ProcessData(exec In, str Data, inout b Flag, out exec Success)
+macro ValidateInput(in str Data, out b IsValid, out str ErrorMsg)
 ```
 
 ## 🧪 Examples
