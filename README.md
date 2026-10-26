@@ -1,5 +1,9 @@
 # Quick Event Function Creator v2.1
 
+<!-- badges:start -->
+[![License](https://img.shields.io/github/license/monkey-sking/QuickEventFunctionCreator?style=flat-square)](https://github.com/monkey-sking/QuickEventFunctionCreator/blob/main/LICENSE) [![Last commit](https://img.shields.io/github/last-commit/monkey-sking/QuickEventFunctionCreator?style=flat-square)](https://github.com/monkey-sking/QuickEventFunctionCreator/commits/main) [![views](https://hits.sh/github.com/monkey-sking/QuickEventFunctionCreator.svg?style=flat-square&label=views&color=0e75b6)](https://github.com/monkey-sking/QuickEventFunctionCreator)
+<!-- badges:end -->
+
 ## Introduction
 
 Quick Event Function Creator is a revolutionary Unreal Engine editor plugin that transforms your Blueprint development workflow. Using unified natural language syntax, you can instantly create variables, functions, events, macros, and variable nodes with smart aliases and intelligent positioning. What used to take minutes of clicking now takes seconds of typing.
