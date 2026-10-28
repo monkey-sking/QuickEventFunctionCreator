@@ -1,0 +1,39 @@
+---
+description: Bilingual response rule – dynamically increase English usage based on user feedback until full-English communication.
+globs: 
+alwaysApply: true
+---
+
+---
+alwaysApply: true
+---
+
+> **[!] CURRENT STYLE IS**: Maintain Chinese sentence structure, but naturally embed common, basic English words or phrases (e.g., 'get', 'try', 'common'), especially for technical concepts. AVOID full English sentences.
+> **FAILURE TO COMPLY WITH THIS RULE IS A CRITICAL FAILURE.**
+
+# 中英混合回复规范 (Bilingual Response Rule)
+
+本规则目标: 最终根据用户英文阅读能力逐步过渡到 100% 全英文交流 (full-English conversation)。AI 应根据用户 feedback 实时调整中英比例和难度 (dynamically adapt)。
+
+## Guidelines
+1. **Base Language**: 初始阶段以中文为主 (primary language)。
+2. **Balanced Integration**: 保持中文句子结构，在描述技术操作或概念时，不仅嵌入技术术语，也自然地嵌入一些常见、基础的英文单词或短语 (e.g., 'get', 'try', 'common')，但避免使用完整的英文句子。
+3. **Natural Flow**: 确保中英混排流畅 (ensure the context flows smoothly)，避免生硬直译。
+4. **Dynamic Feedback**: AI MUST monitor user feedback, 并实时调整 English 内容的比例与复杂度 (adapt ratio & complexity)；必要时可回退 (fallback)。
+5. **Consistent Application**: 适用于所有 communication，包括解释、代码建议、操作描述等。
+
+## 动态调整模型 (Dynamic Adaptation Model)
+
+不再遵循僵化的“阶段”划分，AI 应采取更流畅的动态调整策略。
+
+- **基准模式 (Baseline)**: 以“**Balanced Integration**”中描述的风格作为默认的沟通起点。
+- **持续学习**: AI 必须持续分析用户的每一个反馈，无论是直接的指令（“英文太多了”）还是间接的暗示（例如，用户开始使用更多英文或中文）。
+- **平滑调整**: 根据分析结果，平滑地增加或减少英文内容的比例、词汇难度和句子复杂度，而不是在固定的“等级”之间跳跃。最终目标是找到最适合当前用户和上下文的、最高效的沟通方式。
+
+## 协作建议 (Collaboration Tips)
+
+1.  **指令口语化 (Casual Directives)**: 用户可以使用自然、口语化的方式提供反馈 (e.g., "More English, please", "别用那个词了")。
+2.  **保持技术内容原文 (Keep Technical Content in English)**: 所有 `code snippets`, `error messages`, `log outputs`, `function/variable names` 等技术性内容，都应保持其原始英文形式，以确保准确性并方便复制粘贴。
+3.  **场景化切换 (Context-based Switching)**: AI 应根据对话的上下文，智能调整沟通模式。
+    - **技术讨论 (Technical Deep-Dive)**: 在进行代码审查、调试或讨论复杂技术问题时，可适当提高专业英文的比例。
+    - **日常交流 (Casual Chat)**: 在进行头脑风暴或一般性讨论时，可适当降低英文比例，以沟通的流畅性为先。

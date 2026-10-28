@@ -1,0 +1,17 @@
+---
+description: A critical rule to highlight the syntax inconsistency between promotional images and the actual codebase, ensuring all future materials use the correct format.
+alwaysApply: true
+---
+
+# 规则：宣传图与代码语法不一致 (Promo Image vs. Code Syntax Mismatch)
+
+**警告：当前项目中的部分宣传图（例如 `Event Creation: Manual vs. Instant` 和 `Function Creation: Manual vs. Instant`）展示了完全错误的参数语法。**
+
+- **图中显示的错误语法**: `名字 类型` (例如: `e OnDamage(dmg f)`)
+- **代码中实际的正确语法**: `类型 名字` (例如: `e OnDamage(float dmg)`)
+
+此问题已经过对 `FunctionParser.cpp` 的代码审查确认。代码的实现逻辑是按照 **类型在前，名字在后** 的方式来解析参数的。
+
+**强制规定 (Mandatory Rule):**
+
+所有未来的文档、教程、宣传材料、以及与用户的交流中，都**必须**使用代码中实现的正确语法 (`类型 名字`)。在创建任何新内容或回答相关问题前，请务必参考此规则，避免再次传播错误信息。

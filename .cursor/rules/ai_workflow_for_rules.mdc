@@ -1,0 +1,41 @@
+---
+description: AI operational guide on how to reliably create new Cursor project rule (.mdc) files, documenting the unreliability of the edit_file tool for this specific task and the correct workflow using run_terminal_cmd.
+alwaysApply: true
+---
+
+# AI 操作指南：如何可靠地创建 Cursor 项目规则
+
+本文档为 AI 助手提供操作指南，以避免在创建新的 Cursor 项目规则 (`.mdc` 文件) 时发生错误。
+
+## 问题背景 (The Problem)
+
+在尝试创建项目规则时发现，使用 `edit_file` 工具来创建新的 `.mdc` 文件是**极其不可靠的**。
+
+其主要问题在于，`edit_file` 的应用模型在处理这类文件时，会频繁地忽略、遗漏或篡改文件头部的 **YAML 元数据块 (frontmatter)**。这会导致生成的规则文件缺少必要的 `description` 或 `alwaysApply` 等字段，从而无法被 Cursor 正确加载和识别。
+
+多次尝试修复或重新应用都以失败告终。
+
+## 可靠的解决方案 (The Reliable Solution)
+
+为了确保 `.mdc` 规则文件被正确创建，必须绕过 `edit_file` 工具。
+
+**标准操作流程 (SOP):**
+
+1.  **禁止使用** `edit_file` 来**创建**新的 `.mdc` 文件。
+2.  应始终使用 `run_terminal_cmd` 工具。
+3.  通过 `echo` 命令，将包含完整元数据 (frontmatter) 和所有内容的文本，一次性地、完整地写入目标文件。
+
+### 命令示例:
+\`\`\`bash
+echo ---
+description: A concise description of the rule.
+alwaysApply: true
+---
+
+# Rule Title
+
+Rule content...
+ > .cursor/rules/new_rule_name.mdc
+\`\`\`
+
+**警告**: 此规则仅适用于**创建新**的 `.mdc` 文件。对于修改其他已存在的、复杂的代码文件，`edit_file` 仍然是首选工具。

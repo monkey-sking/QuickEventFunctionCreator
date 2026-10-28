@@ -1,0 +1,22 @@
+---
+description: Fab 包流程无需编译，只需同步源码和资源再 zip 打包，避免无意义的 build 步骤
+alwaysApply: true
+---
+
+# Fab 包流程规范补充
+
+## Fab 包（Fab 审核 zip 包）流程
+- **Fab 包只需要源码和资源**，不需要任何二进制产物（Binaries、Intermediate、Build、Saved 等）。
+- **Fab 包流程无需编译（build/compile）**，只需同步源码到 Release 目录，然后直接 zip 打包。
+- 推荐命令：
+  ```bash
+  bash BuildUtils/SyncSourceToRelease.sh
+  bash BuildUtils/PackageAllVersions.sh
+  ```
+- **不要在 Fab 包流程中执行 build/compile 步骤**，避免浪费时间和资源。
+- 如需验证源码能否编译通过，请单独运行 build/compile 脚本（如 BuildAllVersionsWithBinaries.sh），不要和 Fab 包流程混用。
+
+## 经验教训
+- 曾有误区：Fab 包流程中先 build/compile 再删除 Binaries，实际无意义。
+- 现已明确：Fab 包流程只需同步源码+打包，无需编译。
+

@@ -1,0 +1,12 @@
+---
+description: The core working principle of the QuickEventFunctionCreator plugin. It operates on Blueprint assets directly using editor APIs and does not generate C++ code, making it compatible with all project types.
+alwaysApply: true
+---
+
+# 插件核心工作原理 (Core Principles)
+
+本插件 "Quick Event Function Creator" 通过使用 Unreal Engine 的编辑器 API（例如 `FBlueprintEditorUtils`）直接在蓝图资产（`UBlueprint`）内部创建和修改节点（函数和自定义事件）来实现其功能。
+
+**关键点:**
+- **它不生成 C++ 源代码文件**。
+- 因此，它可以在所有类型的项目中无缝工作，包括纯蓝图项目，**无需 C++ 工具链或编译环境**。

@@ -1,0 +1,43 @@
+{
+	"FileVersion": 3,
+	"Version": 2,
+	"VersionName": "2.0.0",
+	"EngineVersion": "5.7.0",
+	"FriendlyName": "Quick Event Function Creator",
+	"Description": "Quickly create Blueprint Functions or Custom Events by typing C++ style function signatures. Boost your Blueprint development workflow by avoiding manual setup of nodes and pins. Just type and create!",
+	"Category": "Editor Scripting Utilities",
+	"CreatedBy": "runking",
+	"SupportURL": "https://discord.gg/tvemMvE63r",
+	"CanContainContent": false,
+	"IsBetaVersion": false,
+	"IsExperimentalVersion": false,
+	"Installed": true,
+	"SupportedTargetPlatforms": [
+		"Win64",
+		"Mac"
+	],
+	"SupportedEngineVersions": [
+		"4.26",
+		"4.27",
+		"5.0",
+		"5.1",
+		"5.2",
+		"5.3",
+		"5.4",
+		"5.5",
+		"5.6",
+		"5.7"
+	],
+	"Modules": [
+		{
+			"Name": "SmartBlueprintFunctionCreator",
+			"Type": "Editor",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": [
+				"Win64",
+				"Mac"
+			]
+		}
+	],
+	"Icon": "Resources/Icon128.png"
+}

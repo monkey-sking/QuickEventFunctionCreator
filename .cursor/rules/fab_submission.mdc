@@ -1,0 +1,45 @@
+---
+description: "Epic Fab 市场插件提交的核心规则与自动化工作流程，确保符合官方内容与技术审核标准。"
+alwaysApply: true
+---
+
+# Epic Fab 插件提交规则（内容与技术双重标准）
+
+## 1. 官方内容规范（Epic Games Content Guidelines）
+- **内容合法合规**：不得包含违法、侵权、低俗、歧视、仇恨等内容。
+- **高质量标准**：资源必须高质量、无明显瑕疵，不能有低分辨率、破损、未优化的资产。
+- **结构清晰**：文件结构要清晰、易于理解，不能有多余、无用的文件夹或资源。
+- **描述准确**：插件/资源的描述、标签、分类必须准确，不能误导用户。
+- **无恶意代码**：不得包含任何恶意脚本、后门、未经授权的第三方依赖等。
+- **建议**：保证 `.uplugin`、`Source`、`Resources` 等目录结构规范，删除所有未使用、空的、或与插件无关的文件夹（如 Binaries、Intermediate、Build、Saved），所有资源（如图标）都在 `.uplugin` 中被引用，插件描述、作者、支持链接等信息真实有效。
+
+## 2. Fab 技术要求（FAB TECHNICAL REQUIREMENTS）
+- **每个引擎版本独立包**：每个支持的 Unreal Engine 版本都要有独立的 `.zip` 包，包内只有一个顶层文件夹，且名称与插件一致。
+- **纯源码包**：不允许包含任何编译产物（Binaries、Intermediate、Build、Saved）。
+- **EngineVersion 字段**：每个包内的 `.uplugin` 文件必须有 `"EngineVersion"` 字段，且与该包的引擎版本严格对应（如 5.4.0）。
+- **资源引用**：所有资源（如图标）必须在 `.uplugin` 文件中被引用，否则会被视为“未使用资源”。
+- **加密与命名**：如需加密，需在提交说明中注明密码。包名需清晰标明版本。
+- **直接下载链接**：上传到如 GitHub Releases，提供直接下载链接。
+
+## 3. 自动化工作流（推荐）
+1. **开发**：在项目根目录的 `Source/`, `Resources/` 和 `.uplugin` 文件中进行所有修改。
+2. **同步源码**：运行 `BuildUtils/SyncSourceToRelease.sh` 脚本。该脚本会以“先删除后重建”的模式，将根目录最新的、干净的源码完整同步到 `Release/` 目录下的所有版本中，并**自动设置所有正确的 `EngineVersion`**。
+3. **打包 Fab .zip 文件**：运行 `BuildUtils/PackageAllVersions.sh` 脚本。该脚本会：
+    - 遍历 `Release/` 目录中的所有版本。
+    - 为每个版本创建一个**加密的、符合提交流求的 `.zip` 文件**。
+    - 运行时会**提示输入密码**。
+    - 最终的产物会存放在 `ZippedPackages/` 目录中。
+
+## 4. 参考官方文档
+- [Epic Games 内容规范](https://www.epicgames.com/site/zh-CN/content-guidelines)
+- [Fab 技术要求](https://support.fab.com/s/article/FAB-TECHNICAL-REQUIREMENTS?language=zh_CN)
+
+
+
+## 5. 常见审核问题与解决方案（经验补充）
+- **空 Content 文件夹**：Fab 审核会因空 Content 文件夹拒绝插件。解决方案：彻底删除 Content 文件夹，并在 .uplugin 中将 "CanContainContent" 设为 false。
+- **未引用资源**：如 Resources 目录下的图标未在 .uplugin 中用 Icon 字段声明，也会被判为“未使用资源”。务必在 .uplugin 顶层添加 "Icon": "Resources/Icon128.png"。
+- **EngineVersion 字段自动化**：每个 Release 包的 .uplugin 文件必须有与目录版本严格一致的 EngineVersion（如 5.4.0），本项目的 SyncSourceToRelease.sh 脚本已实现自动动态修正。
+- **自动化脚本维护**：如遇 Epic/Fab 审核规则变更，需及时维护 SyncSourceToRelease.sh 和 PackageAllVersions.sh，确保流程始终合规。
+- **Fab 审核踩坑**：如遇“未使用资源”、“结构不规范”、“描述不准确”等拒审，优先对照本规则逐条排查。
+

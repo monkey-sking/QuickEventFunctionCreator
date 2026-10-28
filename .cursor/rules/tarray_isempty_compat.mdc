@@ -1,0 +1,23 @@
+---
+description: Unreal Engine 插件跨 UE4/UE5 兼容性规则：TArray.IsEmpty() 用法
+alwaysApply: true
+---
+
+# TArray.IsEmpty() 兼容性规则
+
+为保证插件能在所有 Unreal Engine 4 和 5 版本下无误编译，所有 `TArray.IsEmpty()` 的用法必须用如下宏判断方式：
+
+```cpp
+#if ENGINE_MAJOR_VERSION >= 5
+    if (Array.IsEmpty())
+#else
+    if (Array.Num() == 0)
+#endif
+```
+
+- 只针对 `TArray`，`FString.IsEmpty()` 不受影响。
+- 头文件 include 路径应采用 Unreal 推荐写法（如 `#include "SmartBlueprintCreatorSettings.h"`），并确保 `Build.cs` 里 `PublicIncludePaths` 配置正确。
+- 如遇 linter 报头文件找不到，优先检查 `Build.cs` 配置。
+
+此规则适用于所有插件源码，确保 Fab/Marketplace 审核通过。
+

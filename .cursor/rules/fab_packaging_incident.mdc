@@ -1,0 +1,22 @@
+---
+description: Fab 包流程执行事故与经验教训补充
+alwaysApply: true
+---
+
+# Fab 包流程事故与经验教训
+
+## 事故回顾
+- 曾有操作未严格按照项目规则推荐的自动化脚本（如 PackageAllVersions.sh）批量打包 Fab 包，而是手动进入单个版本目录用 zip 命令打包单一版本。
+- 虽然本质流程（同步源码+zip，无编译）一致，但手动 zip 容易遗漏其它版本 Fab 包，且不利于团队协作和流程标准化。
+
+## 经验教训
+- Fab 包流程应严格使用自动化脚本（如 SyncSourceToRelease.sh + PackageAllVersions.sh），确保所有版本 Fab 包一键生成，结构合规、内容最新。
+- 手动 zip 只适合临时调试，不应作为团队标准流程。
+- 以后 Fab 包流程必须优先用自动化脚本，避免遗漏和不一致。
+
+## 推荐命令
+```bash
+bash BuildUtils/SyncSourceToRelease.sh
+bash BuildUtils/PackageAllVersions.sh
+```
+

@@ -1,0 +1,36 @@
+---
+description: 关于“打包”与“打 Fab 包”术语区分与操作规范
+alwaysApply: true
+---
+
+# “打包”与“打 Fab 包”术语区分与操作规范
+
+## 1. 术语区分
+- “打包”/“编译”/“build/compile”指的是：用 Unreal Build Tool 或 Editor 编译插件源码，生成可用二进制，验证插件能否在目标 UE 版本下正常加载、运行。
+- “打 Fab 包”指的是：将源码和资源按 Fab 审核要求 zip 打包，用于市场上传和审核。
+
+## 2. 操作规范
+- “打包”请优先使用 `BuildUtils/BuildAllVersions.sh` 或 `BuildUtils/CheckTestProjectBinaries.sh`，确保插件能在各目标 UE 版本下编译通过。
+- “打 Fab 包”请严格按 `SyncSourceToRelease.sh` + `PackageAllVersions.sh` 流程，生成结构合规的 zip 包。
+
+## 3. 经验教训
+- AI 助手曾多次误将“打包”理解为“打 Fab 包”，导致沟通和操作偏差。
+- 现已将术语区分和操作规范固化为项目规则，后续严格区分，避免再犯。
+
+## 4. 参考命令
+
+编译 5.6 插件：
+```bash
+bash BuildUtils/BuildAllVersions.sh 5.6
+```
+或
+```bash
+bash BuildUtils/CheckTestProjectBinaries.sh 5.6
+```
+
+打 Fab 包：
+```bash
+bash BuildUtils/SyncSourceToRelease.sh
+bash BuildUtils/PackageAllVersions.sh
+```
+

@@ -1,0 +1,21 @@
+---
+description: Fab 打包标准流程：同步源码到 Release 后再批量加密打包
+alwaysApply: true
+---
+
+# Fab Marketplace 打包标准流程
+
+每次打包 Fab 提交包前，必须先同步主线源码到 Release 目录，再批量加密打包，确保所有版本包内容都是最新的、干净的。
+
+## 推荐命令顺序
+
+```bash
+bash BuildUtils/SyncSourceToRelease.sh
+bash BuildUtils/PackageAllVersions.sh
+```
+
+- 第一步：`SyncSourceToRelease.sh` 会自动清理并同步主线源码到 Release/Plugins_xxx 目录，修正 EngineVersion 字段。
+- 第二步：`PackageAllVersions.sh` 只需输入一次密码，自动批量加密打包所有版本。
+
+这样能保证每个 Fab 包内容和主线一致，避免漏修、漏资源。
+
